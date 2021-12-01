@@ -21,6 +21,7 @@ export default function Compendium() {
 
   useEffect(() => {
     const getPokemon = async () => {
+      setLoading(true);
       const pokemonList = await fetchPokemon();
       setPokemons(pokemonList);
       setLoading(false);
@@ -86,11 +87,7 @@ export default function Compendium() {
           filterChange={setSelectedType}
           selectedType={selectedType}
         />
-        {loading ? (
-          <code>Search for the bugs in the code!</code>
-        ) : (
-          <PokemonList pokemons={pokemons} />
-        )}
+        {loading ? <div>Loading...</div> : <PokemonList pokemons={pokemons} />}
       </main>
     </div>
   );
